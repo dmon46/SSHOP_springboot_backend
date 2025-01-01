@@ -1,6 +1,7 @@
 package dmon.SSHOP_springboot_backend.entity.product;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import dmon.SSHOP_springboot_backend.entity.account.Seller;
 import dmon.SSHOP_springboot_backend.entity.base.BaseEntity;
 import io.hypersistence.utils.hibernate.type.json.JsonType;
@@ -25,27 +26,29 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@FieldDefaults(level = AccessLevel.PRIVATE) //todo: cate, seller, product metrics
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Product extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "productId", updatable = false, nullable = false)
     String id;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "sellerId")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "sellerId", updatable = false, nullable = false)
     Seller seller;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "categoryId")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "categoryId", nullable = false)
     Category category;
 
+    @OneToOne(mappedBy = "product", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY) //todo: edit the api creating a product
+    ProductMetric metric;
+
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true) //orphanRemoval: xóa các child mồ coi
-    @ToString.Exclude
-    @JsonIgnore
+    @JsonIgnore @ToString.Exclude
     List<Sku> skus;
 
-    String status;
+    String status; //DRAFT, REVIEWING, LIVE, DEACTIVATED, SUSPENDED, DELETED
 
     @Column(nullable = false)
     String name;
@@ -64,28 +67,42 @@ public class Product extends BaseEntity {
 
     String sizeChart;
 
-    Float basePrice;
+    Float retailPrice;
 
-    Float weight;
+    Float weight; //unit in grams (g)
 
     String location;
 
     @Type(JsonType.class)
     @Column(columnDefinition = "jsonb")
-    private ArrayList<Attribute> attributes;
+    ArrayList<Attribute> attributes;
 
     @Type(JsonType.class)
     @Column(columnDefinition = "jsonb")
-    private ArrayList<TierVariation> tierVariations;
+    ArrayList<TierVariation> tierVariations;
 
-    //THE NESTED CLASS//
-    @Getter @Setter @AllArgsConstructor @NoArgsConstructor @Builder @FieldDefaults(level = AccessLevel.PRIVATE)
+    //THE NESTED CLASSES//
+    @Data
+    @Builder
+    @FieldDefaults(level = AccessLevel.PRIVATE)
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public static class Attribute {
-        String name; String value; String link;
+        String name;
+
+        String value;
+
+        String link;
     }
 
-    @Getter @Setter @AllArgsConstructor @NoArgsConstructor @Builder @FieldDefaults(level = AccessLevel.PRIVATE)
+    @Data
+    @Builder
+    @FieldDefaults(level = AccessLevel.PRIVATE)
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public static class TierVariation {
-        String name; ArrayList<String> options; ArrayList<String> photos;
+        String name;
+
+        ArrayList<String> options;
+
+        ArrayList<String> photos;
     }
 }

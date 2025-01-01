@@ -1,7 +1,7 @@
 package dmon.SSHOP_springboot_backend.config;
 
+import dmon.SSHOP_springboot_backend._repository.account.IAccountRepository;
 import dmon.SSHOP_springboot_backend.entity.account.Account;
-import dmon.SSHOP_springboot_backend._repository.account.Seller_IAccountRepository;
 import dmon.SSHOP_springboot_backend.enums.RoleEnum;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -22,7 +22,7 @@ public class AppInitConfig {
     PasswordEncoder passwordEncoder;
 
     @Bean
-    ApplicationRunner applicationRunner(Seller_IAccountRepository accountRepo) {
+    ApplicationRunner applicationRunner(IAccountRepository accountRepo) {
         return args -> {
             if (accountRepo.findByUsername("admin").isEmpty()) {
                 HashSet<String> roles = new HashSet<>();

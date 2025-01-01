@@ -1,19 +1,37 @@
 package dmon.SSHOP_springboot_backend.entity.product;
 
+import java.util.ArrayList;
+
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.SQLRestriction;
+import org.hibernate.annotations.Type;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import dmon.SSHOP_springboot_backend.entity.base.BaseEntity;
 import dmon.SSHOP_springboot_backend.entity.inventory.Inventory;
-import dmon.SSHOP_springboot_backend.security.SecurityUtil;
 import io.hypersistence.utils.hibernate.type.json.JsonType;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import jakarta.persistence.*;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 import lombok.experimental.FieldDefaults;
-import org.hibernate.annotations.*;
-
-import java.time.Instant;
-import java.util.ArrayList;
 
 @Entity
 @Table(name = "skus")
@@ -33,37 +51,41 @@ public class Sku extends BaseEntity {
     @Column(name = "skuId", updatable = false, nullable = false)
     String id;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "productId")
     Product product;
 
-    @OneToOne(mappedBy = "sku", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "sku", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     @JsonIgnore @ToString.Exclude
     Inventory inventory;
 
-    String status;
+    String status; //LIVE, DEACTIVATED
 
     @Column(nullable = false)
-    String no;
+    String skuCode;
 
-    @Column(length = 40, nullable = false)
+    @Column()
     String tierName;
 
-    @Column(nullable = false)
+    @Column()
     Integer[] tierIndex;
 
     Float productCost;
 
-    Float basePrice;
+    Float retailPrice;
+
+    Integer carts;
 
     @Type(JsonType.class)
     @Column(columnDefinition = "jsonb")
     private ArrayList<Sku.Specification> specifications;
 
-    //THE NESTED CLASS//
+    // THE NESTED CLASS//
     @Getter @Setter @AllArgsConstructor @NoArgsConstructor @Builder @FieldDefaults(level = AccessLevel.PRIVATE)
     public static class Specification {
-        String name; String value;
+        String name;
+
+        String value;
     }
 
 }

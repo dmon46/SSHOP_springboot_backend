@@ -24,21 +24,5 @@ public class BaseEntity {
     @UpdateTimestamp
     Instant updatedAt;
 
-    String createdBy;
-
-    String updatedBy;
-
     boolean deleted = Boolean.FALSE;
-
-    @PrePersist
-    private void setBeforeCreate() {
-        this.createdBy = this.updatedBy = SecurityUtil.getCurrentAccountLogin().isPresent()
-                ? SecurityUtil.getCurrentAccountLogin().get() : null;
-    }
-
-    @PreUpdate
-    public void setBeforeUpdate() {
-        this.updatedBy = SecurityUtil.getCurrentAccountLogin().isPresent()
-                ? SecurityUtil.getCurrentAccountLogin().get() : null;
-    }
 }

@@ -25,27 +25,29 @@ import javax.crypto.spec.SecretKeySpec;
 @EnableMethodSecurity
 public class SecurityConfig {
     private final String[] PUBLIC_GET_ENDPOINTS = {
-            "/api/v1/category/tree",
-            "/test/**"
+            "/test/**",
+            "/swagger-ui/**", "/swagger-ui.html", "/v3/api-docs/**",
+            "/media/**",
+            "/api/v1/category/**",
+
     };
     private final String[] PUBLIC_POST_ENDPOINTS = {
-            "admin/api/v1/access/login",
-            "seller/api/v1/access/login",
-            "seller/api/v1/account/create",
+            "/admin/api/v1/access/login",
+            "/seller/api/v1/access/login",
+            "/seller/api/v1/account/create",
+            "/seller/api/v1/access/signup",
+            "/api/v1/access/login",
+            "/api/v1/media/**",
+
     };
 
-    private final String[] PUBLIC_ENDPOINTS = {
-            "/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html"
-    };
-
-    @Value("${jwt.secretKey}")
+    @Value("${sshop.jwt.secret-key}")
     private String SECRET_KEY;
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.authorizeHttpRequests(request ->
                 request
-                        .requestMatchers(PUBLIC_ENDPOINTS).permitAll()
                         .requestMatchers(HttpMethod.GET, PUBLIC_GET_ENDPOINTS).permitAll()
                         .requestMatchers(HttpMethod.POST, PUBLIC_POST_ENDPOINTS).permitAll()
                         .anyRequest().authenticated()

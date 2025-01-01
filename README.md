@@ -40,6 +40,10 @@ Spring Validate:
   - provides various data types (int, string, boolean, map, ...) 
   - configs at multiple environments (dev, test, pre-release, product)
 - Maven: is a project management tool, has xml type
+  - Group: an implementing organization. Ex: com.dmon
+  - Artifact: an unique project: Ex: SSHOP_springboot_backend
+  - Name: an application main. Ex: SshopSpringbootBackendApplication or SshopApplication
+  - Package name: an deepest package contain the source code. Ex: SSHOP_springboot_backend => com.dmon.SSHOP_springboot_backend, Sshop => com.dmon.sshop
 - Server: localhost
 - Port: 8044
 - Context-path: sshop
@@ -79,12 +83,15 @@ Some popular shortcuts of IntelliJ IDEA
 - Replace all on a file: Ctrl + R
 - Replace all on whole project: Ctrl + Shift + R
 - Exit the insert mode in git: Ctrl + C
-
-## Bugs
-- Account-Access module:
-  - Navigate to login page if user hasn't logged in yet. On the contrary, navigate to homepage
-  - Check expiration of token
-  - Log in admin center max 3 times
+- Reformat code: Ctrl + Alt + L
 
 ## Todo:
-- Get email => Logout => Design
+Access
+  - Control by refresh token
+  - Detect leak tokens
+  - Try to log in max 3 times
+  - Check expiration of token to log out (at FE)
+  - Refresh page and keep state (at FE)
+
+Category
+  - Drag and drop to update the position

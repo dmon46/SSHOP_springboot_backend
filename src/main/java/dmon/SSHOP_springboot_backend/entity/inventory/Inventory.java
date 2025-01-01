@@ -27,13 +27,13 @@ public class Inventory extends BaseEntity {
     String id;
 
     @MapsId
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "skuId", updatable = false, nullable = false)
     Sku sku;
 
     Integer total;
 
-    Integer stock;
+    Integer stocks;
 
-    Integer sold;
+    Integer sales;
 }

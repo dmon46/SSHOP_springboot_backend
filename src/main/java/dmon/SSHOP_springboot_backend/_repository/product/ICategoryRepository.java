@@ -1,5 +1,6 @@
 package dmon.SSHOP_springboot_backend._repository.product;
 
+import dmon.SSHOP_springboot_backend._repository.product.proj.ICategoryProjection;
 import dmon.SSHOP_springboot_backend.entity.product.Category;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
