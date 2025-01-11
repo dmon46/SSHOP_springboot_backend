@@ -1,5 +1,6 @@
 package dmon.SSHOP_springboot_backend.entity.product;
 
+import dmon.SSHOP_springboot_backend.entity.base.BaseEntity;
 import io.hypersistence.utils.hibernate.type.json.JsonType;
 import jakarta.persistence.*;
 import jakarta.persistence.CascadeType;
@@ -20,12 +21,12 @@ import org.hibernate.annotations.*;
 @NoArgsConstructor
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class ProductTemplate {
+public class ProductTemplate extends BaseEntity {
     @Id
     String id;
 
     @MapsId
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "categoryId", updatable = false, nullable = false)
     Category category;
 

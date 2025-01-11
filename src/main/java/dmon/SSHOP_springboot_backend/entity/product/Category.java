@@ -29,13 +29,9 @@ public class Category extends BaseEntity {
     @Column(name = "categoryId", updatable = false, nullable = false)
     String id;
 
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch =  FetchType.LAZY, orphanRemoval = true)
+    @OneToMany(mappedBy = "category", fetch =  FetchType.LAZY)
     @ToString.Exclude @JsonIgnore
     List<Product> products;
-
-    @OneToOne(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @ToString.Exclude @JsonIgnore
-    ProductTemplate productTemplate;
 
     @Column(length = 40, nullable = false, unique = true)
     String name;

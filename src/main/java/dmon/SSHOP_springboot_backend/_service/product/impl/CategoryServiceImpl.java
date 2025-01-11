@@ -1,17 +1,18 @@
 package dmon.SSHOP_springboot_backend._service.product.impl;
 
-import dmon.SSHOP_springboot_backend._repository.product.ICategoryProjection;
+import dmon.SSHOP_springboot_backend._repository.product.proj.ICategoryProjection;
 import dmon.SSHOP_springboot_backend._repository.product.ICategoryRepository;
+import dmon.SSHOP_springboot_backend._service.product.ICategoryHelper;
 import dmon.SSHOP_springboot_backend._service.product.ICategoryService;
 import dmon.SSHOP_springboot_backend.base.AppException;
 import dmon.SSHOP_springboot_backend.base.ExceptionCode;
-import dmon.SSHOP_springboot_backend.base.PageResponse;
-import dmon.SSHOP_springboot_backend.dto.request.product.CategoryCreateRequest;
-import dmon.SSHOP_springboot_backend.dto.request.product.CategoryUpdateRequest;
-import dmon.SSHOP_springboot_backend.dto.response.product.CategoryResponse;
+import dmon.SSHOP_springboot_backend.base.PageRes;
+import dmon.SSHOP_springboot_backend.dto.request.product.CategoryCreateReq;
+import dmon.SSHOP_springboot_backend.dto.request.product.CategoryUpdateReq;
+import dmon.SSHOP_springboot_backend.dto.response.product.CategoryRes;
 import dmon.SSHOP_springboot_backend.entity.product.Category;
 import dmon.SSHOP_springboot_backend.mapper.product.ICategoryMapper;
-import dmon.SSHOP_springboot_backend.utils.AppUtils;
+import dmon.SSHOP_springboot_backend.utils.AppUtil;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -27,14 +28,14 @@ import java.util.List;
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @Slf4j
-public class CategoryServiceImpl implements ICategoryService {
+public class CategoryServiceImpl implements ICategoryService, ICategoryHelper {
     ICategoryRepository cateRepo;
 
     ICategoryMapper cateMapper;
 
     //CREATE//
     @Override
-    public CategoryResponse create(CategoryCreateRequest payload) {
+    public CategoryRes create(CategoryCreateReq payload) {
         if (this.cateRepo.findFirstByName(payload.getName()).isPresent())
             throw new AppException(ExceptionCode.CATEGORY__NAME_UNIQUE);
 
@@ -44,7 +45,7 @@ public class CategoryServiceImpl implements ICategoryService {
 
     //UPDATE//
     @Override
-    public CategoryResponse update(CategoryUpdateRequest cateDto, String cateId) {
+    public CategoryRes update(CategoryUpdateReq cateDto, String cateId) {
         if (this.cateRepo.findFirstByNameAndIdNot(cateDto.getName(), cateId).isPresent())
             throw new AppException(ExceptionCode.CATEGORY__NAME_UNIQUE);
 
@@ -54,7 +55,7 @@ public class CategoryServiceImpl implements ICategoryService {
         Category cateUpdated = this.cateRepo.findById(cateId)
                 .orElseThrow(()-> new AppException(ExceptionCode.CATEGORY__NOT_FOUND));
 
-        AppUtils.ignoreNull(cateUpdated, cateRequested);
+        AppUtil.ignoreNull(cateUpdated, cateRequested);
 
         Category category = this.cateRepo.save(cateUpdated);
         return this.cateMapper.toResponse(category);
@@ -62,9 +63,9 @@ public class CategoryServiceImpl implements ICategoryService {
 
     //LIST//
     @Override
-    public PageResponse<ICategoryProjection> findAll(Pageable pageable) {
+    public PageRes<ICategoryProjection> findAll(Pageable pageable) {
         Page<ICategoryProjection> catePage = this.cateRepo.findAllProjectedBy(pageable);
-        return AppUtils.toPageResponse(catePage);
+        return AppUtil.toPageRes(catePage);
     }
 
     @Override
@@ -76,11 +77,11 @@ public class CategoryServiceImpl implements ICategoryService {
 
     //FIND//
     @Override
-    public CategoryResponse find(String cateId) {
-        Category cateFound = this.cateRepo.findById(cateId)
+    public CategoryRes find(String cateId) {
+        Category catePresent = this.cateRepo.findById(cateId)
                 .orElseThrow(()-> new AppException(ExceptionCode.CATEGORY__NOT_FOUND));
 
-        return this.cateMapper.toResponse(cateFound);
+        return this.cateMapper.toResponse(catePresent);
     }
 
     //DELETE//
@@ -88,6 +89,15 @@ public class CategoryServiceImpl implements ICategoryService {
     public Void delete(String cateId) {
         this.cateRepo.deleteById(cateId);
         return null;
+    }
+
+    //HELPER//
+    @Override
+    public Category findEntity(String cateId) {
+        Category catePresent = this.cateRepo.findById(cateId)
+                .orElseThrow(()-> new AppException(ExceptionCode.CATEGORY__NOT_FOUND));
+
+        return catePresent;
     }
 
 }

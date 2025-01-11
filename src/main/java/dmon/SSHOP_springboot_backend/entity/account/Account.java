@@ -1,21 +1,30 @@
 package dmon.SSHOP_springboot_backend.entity.account;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import dmon.SSHOP_springboot_backend.entity.base.BaseEntity;
-import jakarta.persistence.*;
-import lombok.*;
-import lombok.experimental.FieldDefaults;
+import java.util.Set;
+
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.SQLRestriction;
 
-import java.util.Set;
-
+import dmon.SSHOP_springboot_backend.entity.base.BaseEntity;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.experimental.FieldDefaults;
 
 @Entity
 @Table(name = "accounts")
-@DynamicInsert //ignore null-value attributes
+@DynamicInsert // ignore null-value attributes
 @DynamicUpdate
 @SQLDelete(sql = "UPDATE accounts SET deleted = true WHERE account_id=?")
 @SQLRestriction("deleted = false")
@@ -30,14 +39,6 @@ public class Account extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "accountId", updatable = false, nullable = false)
     String id;
-
-    @OneToOne(mappedBy = "account", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonIgnore @ToString.Exclude
-    User user;
-
-    @OneToOne(mappedBy = "account", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonIgnore @ToString.Exclude
-    Seller seller;
 
     @Column(nullable = false, unique = true)
     String username;

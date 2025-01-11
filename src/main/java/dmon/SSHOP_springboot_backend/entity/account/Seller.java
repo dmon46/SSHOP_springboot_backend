@@ -52,5 +52,5 @@ public class Seller extends BaseEntity {
 
     String sellerType;
 
-    String status;
+    String status; //REGISTERING, REVIEWING, LIVE, DEACTIVATED, SUSPENDED, CLOSED
 }
