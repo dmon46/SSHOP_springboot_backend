@@ -21,8 +21,7 @@ Git rule
 - Format:
   - \<action>: \<feature>: \<description>
 - Action:
-  - a: add
-  - m: modify
+  - n: new
   - f: fix
   - g: git
   - r: refactor

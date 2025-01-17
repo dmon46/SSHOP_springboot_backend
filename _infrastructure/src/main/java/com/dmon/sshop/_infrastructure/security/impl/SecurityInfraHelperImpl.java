@@ -85,7 +85,7 @@ public class SecurityInfraHelperImpl implements ISecurityInfraHelper {
      * @return the login of the current user.
      */
     @Override
-    public String getAccessId() {
+    public String getAccountId() {
         //1. get Security Context
         SecurityContext securityContext = SecurityContextHolder.getContext();
 

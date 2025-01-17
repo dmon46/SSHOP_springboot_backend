@@ -2,6 +2,7 @@ package com.dmon.sshop._domain.inventory.model.entity;
 
 import com.dmon.sshop._domain.common.base.BaseEntity;
 import com.dmon.sshop._domain.product.model.entity.Product;
+import com.dmon.sshop._domain.shopping.model.entity.CartItem;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.hypersistence.utils.hibernate.type.json.JsonType;
 import jakarta.persistence.CascadeType;
@@ -12,6 +13,7 @@ import lombok.experimental.FieldDefaults;
 import org.hibernate.annotations.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "skus")
@@ -32,12 +34,16 @@ public class Sku extends BaseEntity {
     String id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "productId")
+    @JoinColumn(name = "productId", updatable = false, nullable = false)
     @JsonIgnore
     Product product;
 
-    @OneToOne(mappedBy = "sku", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "sku", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     Inventory inventory;
+
+    @OneToMany(mappedBy = "sku", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonIgnore
+    List<CartItem> cartItems;
 
     String status; //LIVE, DEACTIVATED
 
@@ -61,9 +67,14 @@ public class Sku extends BaseEntity {
     private ArrayList<Specification> specifications;
 
     // THE NESTED OBJECTS//
-    public enum StatusEnum { LIVE, DEACTIVATED, }
+    public enum StatusEnum {LIVE, DEACTIVATED,}
 
-    @Getter @Setter @AllArgsConstructor @NoArgsConstructor @Builder @FieldDefaults(level = AccessLevel.PRIVATE)
+    @Getter
+    @Setter
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @Builder
+    @FieldDefaults(level = AccessLevel.PRIVATE)
     public static class Specification {
         String name;
 

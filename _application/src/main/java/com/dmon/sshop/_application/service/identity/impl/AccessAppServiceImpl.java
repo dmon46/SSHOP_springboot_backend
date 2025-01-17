@@ -1,11 +1,11 @@
 package com.dmon.sshop._application.service.identity.impl;
 
-import com.dmon.sshop._application.service.identity.IAccessAppService;
 import com.dmon.sshop._application.external.security.IAccessSecurityService;
+import com.dmon.sshop._application.service.identity.IAccessAppService;
+import com.dmon.sshop._domain.identity.model.entity.Account;
 import com.dmon.sshop._domain.identity.model.request.AccountReq;
 import com.dmon.sshop._domain.identity.model.response.AccountRes;
-import com.dmon.sshop._domain.identity.model.entity.Account;
-import com.dmon.sshop._domain.identity.service.IAccessDomainService;
+import com.dmon.sshop._domain.identity.servicev2.IAccessDomainService;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -21,8 +21,8 @@ public class AccessAppServiceImpl implements IAccessAppService {
 
     IAccessSecurityService accessSecurityService;
     @Override
-    public AccountRes.Access login(AccountReq.Login loginDto, Account.RoleEnum roleEnum) {
-        return this.accessSecurityService.login(loginDto, roleEnum);
+    public AccountRes.Access login(AccountReq.Login loginDto, Account.RoleType roleType) {
+        return this.accessSecurityService.login(loginDto, roleType);
     }
 
     @Override
@@ -31,7 +31,7 @@ public class AccessAppServiceImpl implements IAccessAppService {
     }
 
     @Override
-    public AccountRes.Signup signup(AccountReq.Create accessDto, Account.RoleEnum role) {
+    public Object signup(AccountReq.Create accessDto, Account.RoleType role) {
         return this.accessDomainService.signup(accessDto, role);
     }
 }

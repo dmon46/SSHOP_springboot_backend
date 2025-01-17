@@ -22,4 +22,9 @@ public class SkuInfraRepositoryImpl implements ISkuDomainRepository {
     public Optional<Sku> findBySkuCode(String skuCode) {
         return this.skuJpaMapper.findBySkuCode(skuCode);
     }
+
+    @Override
+    public Optional<Sku> findById(String id) {
+        return this.skuJpaMapper.findById(id);
+    }
 }

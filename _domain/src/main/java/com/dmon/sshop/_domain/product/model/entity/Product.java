@@ -61,17 +61,13 @@ public class Product extends BaseEntity {
     @JoinColumn(name = "categoryId", nullable = false)
     Category category;
 
-    @OneToOne(mappedBy = "product", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY) // todo: edit the api
-                                                                                           // creating a product
-    ProductMetric metric;
+    @OneToOne(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    ProductMetric metric; //todo: edit the api, creating a product
 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true) // orphanRemoval:
-                                                                                                              // xóa các
-                                                                                                              // child
-                                                                                                              // mồ coi
-    List<Sku> skus;
+    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    List<Sku> skus; //orphanRemoval: xóa các child mồ coi
 
-    String status; // DRAFT, REVIEWING, LIVE, DEACTIVATED, SUSPENDED, DELETED
+    String status; //DRAFT, REVIEWING, LIVE, DEACTIVATED, SUSPENDED, DELETED
 
     @Column(nullable = false)
     String name;

@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface IAccountAppService {
     AccountRes createOne(AccountReq.Create accountDto);
-    Account preparePreCreate(AccountReq.Create accountDto, Account.RoleEnum roleEnum);
+    Account preparePreCreate(AccountReq.Create accountDto, Account.RoleType roleType);
     AccountRes updateOne(String accountId, AccountReq.Update body);
     Void deleteOne(String accountId);
     List<Account> listAll();

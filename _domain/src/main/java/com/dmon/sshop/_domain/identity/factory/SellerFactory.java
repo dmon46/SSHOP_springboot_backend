@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @Slf4j
-public class SellerAggFactory {
+public class SellerFactory {
     ISellerDomainRepository sellerDomainRepo;
 
     public Seller findById(String id) {

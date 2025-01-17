@@ -31,7 +31,7 @@ public class AccessController {
         ) {
             return ResponseEntity
                     .ok()
-                    .body(this.accessAppService.login(request, Account.RoleEnum.ADMIN));
+                    .body(this.accessAppService.login(request, Account.RoleType.ADMIN));
         }
 
         @PostMapping("/logout")
@@ -49,17 +49,19 @@ public class AccessController {
     @AllArgsConstructor
     @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
     public static class AccessSellerController {
+
         IAccessAppService accessAppService;
+        Account.RoleType roleType = Account.RoleType.SELLER;
 
         //LOG IN, OUT//
         @PostMapping("/login")
         public ResponseEntity<AccountRes.Access> login(
-                @RequestBody AccountReq.Login request
+                @RequestBody AccountReq.Login accountLoginReq
         ) {
             //todo: (side): don't allow seller login when status is registering (and others)
             return ResponseEntity
                     .ok()
-                    .body(this.accessAppService.login(request, Account.RoleEnum.SELLER));
+                    .body(this.accessAppService.login(accountLoginReq, roleType));
         }
 
         @PostMapping("/logout")
@@ -72,12 +74,12 @@ public class AccessController {
 
         //SIGN UP//
         @PostMapping("/signup")
-        public ResponseEntity<AccountRes.Signup> signup(
+        public ResponseEntity<Object> signup(
                 @RequestBody AccountReq.Create accessDto
         ) {
             return ResponseEntity
                     .status(HttpStatus.CREATED)
-                    .body(this.accessAppService.signup(accessDto, Account.RoleEnum.SELLER));
+                    .body(this.accessAppService.signup(accessDto, roleType));
         }
     }
 
@@ -87,17 +89,37 @@ public class AccessController {
     @AllArgsConstructor
     @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
     public static class AccessUserController {
+
         IAccessAppService accessAppService;
+        Account.RoleType roleType = Account.RoleType.USER;
 
         //LOG IN, OUT//
         @PostMapping("/login")
         @PreAuthorize("hasRole('USER')")
         public ResponseEntity<AccountRes.Access> login(
-                @RequestBody AccountReq.Login request
+                @RequestBody AccountReq.Login accountLoginReq
         ) {
             return ResponseEntity
                     .ok()
-                    .body(this.accessAppService.login(request, Account.RoleEnum.USER));
+                    .body(this.accessAppService.login(accountLoginReq, roleType));
+        }
+
+        @PostMapping("/logout")
+        @PreAuthorize("hasRole('USER')")
+        public ResponseEntity<Void> logout() {
+            return ResponseEntity
+                    .status(HttpStatus.NO_CONTENT)
+                    .body(this.accessAppService.logout());
+        }
+
+        //SIGN UP//
+        @PostMapping("/signup")
+        public ResponseEntity<Object> signup(
+                @RequestBody AccountReq.Create accessCreateReq
+        ) {
+            return ResponseEntity
+                    .status(HttpStatus.CREATED)
+                    .body(this.accessAppService.signup(accessCreateReq, roleType));
         }
     }
 }

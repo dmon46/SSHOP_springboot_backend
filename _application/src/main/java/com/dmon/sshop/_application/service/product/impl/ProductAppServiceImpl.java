@@ -21,16 +21,14 @@ import org.springframework.stereotype.Service;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @Slf4j
 public class ProductAppServiceImpl implements IProductAppService {
-    IProductDomainService productDomainService;
 
+    IProductDomainService productDomainService;
     ISecurityInfraHelper securityInfraService;
 
     //CREATE//
     @Override
     public Product create(ProductReq.Create productDto) {
-        String sellerId = this.securityInfraService.getAccessId();
-
-        return this.productDomainService.create(productDto, sellerId);
+        return this.productDomainService.create(productDto, this.securityInfraService.getAccountId());
     }
 
     //LIST//
