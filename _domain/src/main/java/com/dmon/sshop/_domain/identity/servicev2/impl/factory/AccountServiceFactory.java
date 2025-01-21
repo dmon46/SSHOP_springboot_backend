@@ -22,7 +22,7 @@ public class AccountServiceFactory {
         return switch (roleType) {
             case USER -> userService;
             case SELLER -> sellerService;
-            default -> throw new AppException(ErrorCode.SYSTEM__ENUM_KEY_INVALID);
+            default -> throw new AppException(ErrorCode.SYSTEM__KEY_UNSUPPORTED);
         };
     }
 

@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @Slf4j
-public class InventoryAggFactory {
+public class InventoryFactory {
     //CREATE//
     public Inventory create(Sku sku) {
         Inventory inventory = Inventory.builder()

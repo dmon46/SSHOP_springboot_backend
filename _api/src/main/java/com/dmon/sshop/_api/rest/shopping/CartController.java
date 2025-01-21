@@ -1,7 +1,6 @@
-package com.dmon.sshop._api.rest.shipping;
+package com.dmon.sshop._api.rest.shopping;
 
 import com.dmon.sshop._application.service.shopping.ICartAppService;
-import com.dmon.sshop._domain.shopping.model.entity.Cart;
 import com.dmon.sshop._domain.shopping.model.request.CartItemAddReq;
 import com.dmon.sshop._domain.shopping.model.request.CartItemEditReq;
 import lombok.AccessLevel;
@@ -17,6 +16,13 @@ public class CartController {
     @RequestMapping("admin/cart")
     @AllArgsConstructor
     public static class CartAdminController {
+
+    }
+
+    @RestController
+    @RequestMapping("admin/cart")
+    @AllArgsConstructor
+    public static class CartSellerController {
 
     }
 

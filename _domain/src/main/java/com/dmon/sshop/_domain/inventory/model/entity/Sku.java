@@ -3,6 +3,7 @@ package com.dmon.sshop._domain.inventory.model.entity;
 import com.dmon.sshop._domain.common.base.BaseEntity;
 import com.dmon.sshop._domain.product.model.entity.Product;
 import com.dmon.sshop._domain.shopping.model.entity.CartItem;
+import com.dmon.sshop._domain.shopping.model.entity.OrderItem;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.hypersistence.utils.hibernate.type.json.JsonType;
 import jakarta.persistence.CascadeType;
@@ -38,12 +39,16 @@ public class Sku extends BaseEntity {
     @JsonIgnore
     Product product;
 
-    @OneToOne(mappedBy = "sku", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @OneToOne(mappedBy = "sku", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     Inventory inventory;
 
-    @OneToMany(mappedBy = "sku", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "sku", fetch = FetchType.LAZY)
     @JsonIgnore
     List<CartItem> cartItems;
+
+    @OneToMany(mappedBy = "sku", fetch = FetchType.LAZY)
+    @JsonIgnore
+    List<OrderItem> orderItems;
 
     String status; //LIVE, DEACTIVATED
 
@@ -67,7 +72,7 @@ public class Sku extends BaseEntity {
     private ArrayList<Specification> specifications;
 
     // THE NESTED OBJECTS//
-    public enum StatusEnum {LIVE, DEACTIVATED,}
+    public enum StatusType {LIVE, DEACTIVATED,}
 
     @Getter
     @Setter

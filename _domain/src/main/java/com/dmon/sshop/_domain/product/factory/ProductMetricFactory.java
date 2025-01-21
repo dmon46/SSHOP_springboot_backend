@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @Slf4j
-public class ProductMetricAggFactory {
+public class ProductMetricFactory {
     //CREATE//
     public ProductMetric create(Product product) {
         ProductMetric productMetric = ProductMetric.builder()

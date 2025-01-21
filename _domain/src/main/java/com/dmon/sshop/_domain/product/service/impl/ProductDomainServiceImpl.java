@@ -4,7 +4,7 @@ import com.dmon.sshop._domain.common.base.PageRes;
 import com.dmon.sshop._domain.common.util.AppUtil;
 import com.dmon.sshop._domain.identity.model.entity.Seller;
 import com.dmon.sshop._domain.product.mapper.IProductMapper;
-import com.dmon.sshop._domain.product.factory.ProductAggFactory;
+import com.dmon.sshop._domain.product.factory.ProductFactory;
 import com.dmon.sshop._domain.product.model.entity.Product;
 import com.dmon.sshop._domain.product.model.projection.ProductProj;
 import com.dmon.sshop._domain.product.model.request.ProductReq;
@@ -29,7 +29,7 @@ public class ProductDomainServiceImpl implements IProductDomainService {
 
     IProductMapper productMapper;
 
-    ProductAggFactory productAggFactory;
+    ProductFactory productAggFactory;
 
     ICategoryDomainService cateDomainService;
 

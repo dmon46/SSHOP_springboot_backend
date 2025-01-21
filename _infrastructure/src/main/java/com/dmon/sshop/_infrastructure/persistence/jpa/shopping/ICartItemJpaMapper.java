@@ -5,7 +5,6 @@ import com.dmon.sshop._domain.shopping.model.entity.Cart;
 import com.dmon.sshop._domain.shopping.model.entity.CartItem;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.ArrayList;
 import java.util.Optional;
 
 public interface ICartItemJpaMapper extends JpaRepository<CartItem, String> {

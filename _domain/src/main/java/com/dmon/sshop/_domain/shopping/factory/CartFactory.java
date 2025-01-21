@@ -34,7 +34,7 @@ public class CartFactory {
     }
 
     private static int genQuantity(int quantity) {
-        if (quantity < 0)
+        if (quantity < 1)
             throw new AppException(ErrorCode.CART__QUANTITY_MIN);
 
         return quantity;

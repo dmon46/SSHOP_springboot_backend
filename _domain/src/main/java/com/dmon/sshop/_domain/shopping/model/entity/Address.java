@@ -26,6 +26,8 @@ import java.util.List;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Address {
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "addressId", updatable = false, nullable = false)
     String id;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -38,9 +40,11 @@ public class Address {
     @ToString.Exclude
     List<Order> orders;
 
-    String name;
+    String status;
 
-    String phone;
+    String contactName;
+
+    String contactPhone;
 
     String province;
 
@@ -48,8 +52,12 @@ public class Address {
 
     String commune;
 
-    String address;
+    String street;
 
-    @Column(name = "isPrimary")
-    boolean primary;
+    boolean isDefault;
+
+    //NESTED OBJECTS//
+    public enum StatusType {
+        NEW, USED, ARCHIVED
+    }
 }

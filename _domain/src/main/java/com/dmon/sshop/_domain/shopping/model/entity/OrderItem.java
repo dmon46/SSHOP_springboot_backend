@@ -29,12 +29,14 @@ public class OrderItem extends BaseEntity {
     String id;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "sku_id", nullable = false)
+    Sku sku;
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id", updatable = false, nullable = false)
     Order order;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "sku_id", nullable = false)
-    Sku sku;
+    float lockedPrice;
 
     int quantity;
 }

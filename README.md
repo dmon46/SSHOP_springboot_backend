@@ -3,7 +3,7 @@
 This is a RESTful API built with Spring Boot 3 for an e-commerce platform similar to TikTok Shop. It supports various functionalities such as product management, user management, order processing, and more // todo: continue README.
 
 ## How to run
-- java -jar SSHOP_springboot_backend-0.0.1-SNAPSHOT.jar --spring.profiles.active=[dev]
+- java -jar SSHOP_backend-0.0.1-SNAPSHOT.jar --spring.profiles.active=[dev]
 
 ## Project
 - Spring Boot 3.4.0 (Rest, Data JPA, Security)
@@ -139,9 +139,9 @@ Yaml: is a config file which includes environment variables
 - configs at multiple environments (dev, test, pre-release, product)
 Maven: is a project management tool, has xml type
 - Group: an implementing organization. Ex: com.dmon
-- Artifact: an unique project: Ex: SSHOP_springboot_backend
+- Artifact: an unique project: Ex: SSHOP_backend
 - Name: an application main. Ex: SshopSpringbootBackendApplication or SshopApplication
-- Package name: an deepest package contain the source code. Ex: SSHOP_springboot_backend => com.dmon.SSHOP_springboot_backend, Sshop => com.dmon.sshop
+- Package name: an deepest package contain the source code. Ex: SSHOP_backend => com.dmon.SSHOP_backend, Sshop => com.dmon.sshop
 
 Jar: is a format used for packaging and deploying applications
-- run command: java -jar SSHOP_springboot_backend-0.0.1-SNAPSHOT.jar --spring.profiles.active=[dev]
+- run command: java -jar SSHOP_backend-0.0.1-SNAPSHOT.jar --spring.profiles.active=[dev]

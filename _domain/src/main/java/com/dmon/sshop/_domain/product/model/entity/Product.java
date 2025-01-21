@@ -67,8 +67,6 @@ public class Product extends BaseEntity {
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     List<Sku> skus; //orphanRemoval: xóa các child mồ coi
 
-    String status; //DRAFT, REVIEWING, LIVE, DEACTIVATED, SUSPENDED, DELETED
-
     @Column(nullable = false)
     String name;
 
@@ -100,8 +98,10 @@ public class Product extends BaseEntity {
     @Column(columnDefinition = "jsonb")
     ArrayList<TierVariation> tierVariations;
 
-    // THE NESTED OBJECTS//
-    public enum StatusEnum {
+    String status;
+
+    //NESTED OBJECTS//
+    public enum StatusType {
         DRAFT, REVIEWING, LIVE, DEACTIVATED, SUSPENDED, DELETED,
     }
 

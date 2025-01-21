@@ -5,8 +5,6 @@ import com.dmon.sshop._domain.shopping.model.entity.CartItem;
 import com.dmon.sshop._domain.shopping.model.request.CartItemAddReq;
 import com.dmon.sshop._domain.shopping.model.request.CartItemEditReq;
 
-import java.util.ArrayList;
-
 /**
  * key features:
  * - create a cart by a user

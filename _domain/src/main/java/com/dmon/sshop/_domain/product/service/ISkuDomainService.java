@@ -1,5 +1,7 @@
 package com.dmon.sshop._domain.product.service;
 
+import com.dmon.sshop._domain.inventory.model.entity.Sku;
+
 public interface ISkuDomainService {
     //SERVICES//
 
@@ -8,4 +10,6 @@ public interface ISkuDomainService {
      * @desc check if the value of field is unique.
      */
     void checkSkuCodeOrError(String skuCode);
+
+    Sku findOrError(String skuId);
 }

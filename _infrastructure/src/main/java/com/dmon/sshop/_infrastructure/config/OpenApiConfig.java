@@ -59,8 +59,8 @@ public class OpenApiConfig {
 
     public License createLicense() {
         License license = new License();
-        license.setName("Github SSHOP_springboot_backend");
-        license.setUrl("https://github.com/tn9th8/SSHOP_springboot_backend");
+        license.setName("Github SSHOP_backend");
+        license.setUrl("https://github.com/tn9th8/SSHOP_backend");
         return license;
     }
 

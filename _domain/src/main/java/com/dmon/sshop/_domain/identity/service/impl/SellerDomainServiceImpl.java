@@ -30,7 +30,7 @@ import org.springframework.stereotype.Service;
 //                .preparePreCreate(accountDto, Account.RoleType.SELLER);
 //        Seller sellerCreated = Seller.builder()
 //                .account(accountCreated)
-//                .status(Seller.StatusEnum.REGISTERING.name())
+//                .status(Seller.StatusType.REGISTERING.name())
 //                .build();
 //
 //        Seller sellerResult = this.sellerRepo.save(sellerCreated);
