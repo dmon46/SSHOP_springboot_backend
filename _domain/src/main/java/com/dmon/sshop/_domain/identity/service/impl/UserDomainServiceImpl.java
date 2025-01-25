@@ -10,18 +10,18 @@ import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Service;
 
-@Service
-@AllArgsConstructor
-@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
-public class UserDomainServiceImpl {
-    IUserDomainRepository userRepo;
-
-    IUserMapper userMapper;
-
-    public UserRes create(UserReq.Create body) {
-        // todo: refer to account
-        User user = this.userRepo.save(
-                this.userMapper.toEntity(body));
-        return this.userMapper.toRes(user);
-    }
-}
+//@Service
+//@AllArgsConstructor
+//@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
+//public class UserDomainServiceImpl {
+//    IUserDomainRepository userRepo;
+//
+//    IUserMapper userMapper;
+//
+//    public UserRes create(UserReq.Create body) {
+//        // todo: refer to account
+//        User user = this.userRepo.save(
+//                this.userMapper.toEntity(body));
+//        return this.userMapper.toRes(user);
+//    }
+//}

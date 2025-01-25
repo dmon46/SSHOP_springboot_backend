@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.UUID;
 
@@ -79,7 +80,7 @@ public class AppUtil {
     }
 
     /**
-     * Map source to target with ignoring null value.
+     * Map source to target with ignoring null value to update partially.
      *
      * @param target Entity will be updated
      * @param source Entity is requested

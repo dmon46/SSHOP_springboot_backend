@@ -25,7 +25,7 @@ public class AppInitConfig {
         return args -> {
             if (accountRepo.findByUsername("admin").isEmpty()) {
                 HashSet<String> roles = new HashSet<>();
-                roles.add(Account.RoleEnum.ADMIN.name());
+                roles.add(Account.RoleType.ADMIN.name());
 
                 Account account = Account.builder()
                         .username("admin")

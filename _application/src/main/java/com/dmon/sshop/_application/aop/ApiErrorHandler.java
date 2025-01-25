@@ -60,7 +60,7 @@ public class ApiErrorHandler {
     ResponseEntity<ApiRes<Object>> handleException(MethodArgumentNotValidException exception) {
         String enumKey = exception.getFieldError().getDefaultMessage();
 
-        ErrorCode error = ErrorCode.SYSTEM__ENUM_KEY_INVALID;
+        ErrorCode error = ErrorCode.SYSTEM__KEY_UNSUPPORTED;
         try {
             error = ErrorCode.valueOf(enumKey);
         } catch (IllegalArgumentException ignored){ }

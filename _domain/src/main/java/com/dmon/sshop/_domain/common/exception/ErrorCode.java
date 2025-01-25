@@ -16,7 +16,7 @@ public enum ErrorCode {
     SYSTEM__UNHANDLED_EXCEPTION(1000, "An unhandled error.", HttpStatus.INTERNAL_SERVER_ERROR),
     SYSTEM__DEVELOPING_FEATURE(1001, "The feature is still developing.", HttpStatus.INTERNAL_SERVER_ERROR),
     SYSTEM__UNIMPLEMENTED_FEATURE(1002, "The feature is still developing.", HttpStatus.INTERNAL_SERVER_ERROR),
-    SYSTEM__ENUM_KEY_INVALID(1003, "Enum key is invalid.", HttpStatus.INTERNAL_SERVER_ERROR),
+    SYSTEM__KEY_UNSUPPORTED(1003, "The key is unsupported.", HttpStatus.INTERNAL_SERVER_ERROR),
     SYSTEM__METHOD_NOT_SUPPORTED(1004, "Method '%s' is not supported.", HttpStatus.INTERNAL_SERVER_ERROR),
     SYSTEM__ROUTE_NOT_SUPPORTED(1005, "Route '%s' not supported.", HttpStatus.INTERNAL_SERVER_ERROR),
     //ACCOUNT 1100+//
@@ -73,6 +73,19 @@ public enum ErrorCode {
     //INVENTORY 1900+//
     INVENTORY__STOCKS_NOT_EMPTY(1900, "The stocks should not be empty.", HttpStatus.BAD_REQUEST),
     INVENTORY__STOCKS_MIN(1901, "The stocks should be at least 1.", HttpStatus.BAD_REQUEST),
+    INVENTORY__SKU_NOT_FOUND(1902, "The sku is not found.", HttpStatus.BAD_REQUEST),
+    //CART 2000+//
+    CART__NOT_FOUND(2000, "The cart is not found.", HttpStatus.BAD_REQUEST),
+    CART__QUANTITY_MIN(2001, "The quantity should be at least 1.", HttpStatus.BAD_REQUEST),
+    CART__COUNT_MAX(2002, "The count should be at most 0.", HttpStatus.BAD_REQUEST),
+    CART__ITEM_NOT_FOUND(2003, "The cart item is not found.", HttpStatus.BAD_REQUEST),
+    //ADDRESS 2100+//
+    ADDRESS__NOT_FOUND(2100, "The address is not found.", HttpStatus.BAD_REQUEST),
+    //ORDER 2200+//
+    ORDER__QUANTITY_MIN(2200, "The quantity should be at least 1.", HttpStatus.BAD_REQUEST),
+    ORDER__QUANTITY_MAX(2201, "The quantity should not go beyond the available stock.", HttpStatus.BAD_REQUEST),
+    ORDER__NOT_FOUND(2202, "The order is not found.", HttpStatus.BAD_REQUEST),
+    ORDER__PAYMENT_METHOD_UNSUPPORTED(2203, "The payment method is unsupported.", HttpStatus.BAD_REQUEST)
 
     ;
 

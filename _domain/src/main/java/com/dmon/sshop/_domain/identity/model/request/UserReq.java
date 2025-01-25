@@ -16,6 +16,6 @@ public class UserReq {
         String name;
         String photo;
         Date dob;
-        Account.GenderEnum gender;
+        Account.GenderType gender;
     }
 }

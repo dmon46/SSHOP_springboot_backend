@@ -1,9 +1,10 @@
-package com.dmon.sshop._domain.identity.factory;
+package com.dmon.sshop._domain.identity.servicev2.impl;
 
 import com.dmon.sshop._domain.common.exception.AppException;
 import com.dmon.sshop._domain.common.exception.ErrorCode;
 import com.dmon.sshop._domain.identity.model.entity.Seller;
 import com.dmon.sshop._domain.identity.repository.ISellerDomainRepository;
+import com.dmon.sshop._domain.identity.servicev2.ISellerDomainService;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -12,15 +13,18 @@ import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
+@FieldDefaults(level = AccessLevel.PRIVATE,makeFinal = true)
 @Slf4j
-public class SellerAggFactory {
+public class SellerDomainServiceImpl implements ISellerDomainService {
+
     ISellerDomainRepository sellerDomainRepo;
 
-    public Seller findById(String id) {
-        final Seller seller = this.sellerDomainRepo.findById(id)
+
+    @Override
+    public Seller findOrError(String sellerId) {
+        Seller sellerPresent = this.sellerDomainRepo.findById(sellerId)
                 .orElseThrow(() -> new AppException(ErrorCode.SELLER__NOT_FOUND));
 
-        return seller;
+        return sellerPresent;
     }
 }

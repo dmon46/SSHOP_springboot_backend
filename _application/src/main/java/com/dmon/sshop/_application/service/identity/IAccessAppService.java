@@ -5,7 +5,7 @@ import com.dmon.sshop._domain.identity.model.response.AccountRes;
 import com.dmon.sshop._domain.identity.model.entity.Account;
 
 public interface IAccessAppService {
-    AccountRes.Access login(AccountReq.Login request, Account.RoleEnum role);
+    AccountRes.Access login(AccountReq.Login request, Account.RoleType role);
     Void logout();
-    AccountRes.Signup signup(AccountReq.Create accessDto, Account.RoleEnum role);
+    Object signup(AccountReq.Create accessDto, Account.RoleType role);
 }

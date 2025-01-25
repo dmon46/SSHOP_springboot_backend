@@ -1,5 +1,6 @@
 package com.dmon.sshop._domain.product.service.impl;
 
+import com.dmon.sshop._domain.inventory.model.entity.Sku;
 import org.springframework.stereotype.Service;
 
 import com.dmon.sshop._domain.common.exception.AppException;
@@ -27,5 +28,12 @@ public class SkuDomainServiceImpl implements ISkuDomainService {
                     throw new AppException(ErrorCode.SKU__CODE_UNIQUE);
                 });
 
+    }
+
+    @Override
+    public Sku findOrError(String skuId) {
+        Sku skuPresent = this.skuDomainRepo.findById(skuId)
+                .orElseThrow(() -> new AppException(ErrorCode.SKU__NOT_FOUND));
+        return null;
     }
 }

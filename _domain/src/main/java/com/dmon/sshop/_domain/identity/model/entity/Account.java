@@ -45,11 +45,11 @@ public class Account extends BaseEntity {
     Set<String> roles;
 
     //THE NESTED OBJECTS//
-    public enum RoleEnum {
+    public enum RoleType {
         ADMIN, SELLER, USER,
     }
 
-    public enum GenderEnum {
+    public enum GenderType {
         MALE, FEMALE,
     }
 }

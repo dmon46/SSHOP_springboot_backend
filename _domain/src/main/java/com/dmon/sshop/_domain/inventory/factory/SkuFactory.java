@@ -17,8 +17,8 @@ import lombok.extern.slf4j.Slf4j;
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @Slf4j
-public class SkuAggFactory {
-    InventoryAggFactory invAggFactory;
+public class SkuFactory {
+    InventoryFactory invFactory;
 
     // CREATE//
     public List<Sku> create(Product product) {
@@ -27,14 +27,14 @@ public class SkuAggFactory {
                 .forEach(sku -> {
                     sku.setProduct(product);
 
-                    sku.setStatus(Sku.StatusEnum.LIVE.name());
+                    sku.setStatus(Sku.StatusType.LIVE.name());
 
                     if (AppUtil.isEmpty(sku.getSkuCode()))
                         sku.setSkuCode(this.genSkuCode());
 
                     sku.setCarts(0);
 
-                    sku.setInventory(this.invAggFactory.create(sku)); // cascade
+                    sku.setInventory(this.invFactory.create(sku)); // cascade
                 });
 
         return skus;

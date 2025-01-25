@@ -1,7 +1,7 @@
 package com.dmon.sshop._domain.product.factory;
 
 import com.dmon.sshop._domain.common.util.AppUtil;
-import com.dmon.sshop._domain.inventory.factory.SkuAggFactory;
+import com.dmon.sshop._domain.inventory.factory.SkuFactory;
 import com.dmon.sshop._domain.product.model.entity.Product;
 import com.dmon.sshop._domain.inventory.model.entity.Sku;
 import lombok.AccessLevel;
@@ -16,14 +16,14 @@ import java.util.List;
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @Slf4j
-public class ProductAggFactory {
-    SkuAggFactory skuAggFactory;
+public class ProductFactory {
 
-    ProductMetricAggFactory metricAggFactory;
+    SkuFactory skuAggFactory;
+    ProductMetricFactory metricAggFactory;
 
     //CREATE//
     public Product create(Product product) {
-        product.setStatus(Product.StatusEnum.REVIEWING.name());
+        product.setStatus(Product.StatusType.REVIEWING.name());
 
         product.setSlug(this.genSlug(product.getName()));
 

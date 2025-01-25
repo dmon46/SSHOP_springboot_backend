@@ -6,7 +6,7 @@ server:
 
 spring:
   application:
-    name: SSHOP_springboot_backend
+    name: SSHOP_backend
   datasource:
     url: jdbc:postgresql://localhost:5433/sshop
     username: postgres
