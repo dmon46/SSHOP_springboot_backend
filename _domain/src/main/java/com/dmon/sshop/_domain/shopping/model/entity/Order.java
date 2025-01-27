@@ -14,7 +14,6 @@ import org.hibernate.annotations.SQLRestriction;
 
 import java.time.Instant;
 import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "orders")
@@ -58,7 +57,7 @@ public class Order extends BaseEntity {
 
     float shippingFee;
 
-    float discount; //seller discount + platform discount
+    float discount; // seller discount + platform discount
 
     float shippingDiscount;
 
@@ -76,7 +75,7 @@ public class Order extends BaseEntity {
 
     boolean isReviewable;
 
-    //NESTED OBJECTS//
+    // NESTED OBJECTS//
     public enum StatusType {
         DRAFT, UNPAID, PREPARING, TRANSIT, DELIVERING, DELIVERED, RETURN, CANCELED
     }
