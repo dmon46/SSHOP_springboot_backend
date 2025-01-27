@@ -1,8 +1,8 @@
 package com.dmon.sshop._domain.shopping.model.entity;
 
 import com.dmon.sshop._domain.common.base.BaseEntity;
-import com.dmon.sshop._domain.identity.model.entity.Seller;
-import com.dmon.sshop._domain.identity.model.entity.User;
+import com.dmon.sshop._domain.identity.model.entity.Account;
+import com.dmon.sshop._domain.identity.model.entity.Shop;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
@@ -32,14 +32,14 @@ public class Order extends BaseEntity {
     String id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "userId", updatable = false, nullable = false)
+    @JoinColumn(name = "buyerId", updatable = false, nullable = false)
     @JsonIgnore
-    User user;
+    Account buyer;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "sellerId", updatable = false, nullable = false)
+    @JoinColumn(name = "shopId", updatable = false, nullable = false)
     @JsonIgnore
-    Seller seller;
+    Shop shop;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "addressId")
@@ -75,13 +75,9 @@ public class Order extends BaseEntity {
 
     boolean isReviewable;
 
-    // NESTED OBJECTS//
-    public enum StatusType {
-        DRAFT, UNPAID, PREPARING, TRANSIT, DELIVERING, DELIVERED, RETURN, CANCELED
-    }
+    //NESTED OBJECTS//
+    public enum StatusType {DRAFT, UNPAID, PREPARING, TRANSIT, DELIVERING, DELIVERED, RETURN, CANCELED,}
 
-    public enum PaymentMethodType {
-        COD, ZALOPAY, MONO, VNPAY
-    }
+    public enum PaymentMethodType {COD, ZALOPAY, MONO, VNPAY,}
 
 }

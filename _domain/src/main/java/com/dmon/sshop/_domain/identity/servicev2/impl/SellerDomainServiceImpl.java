@@ -2,7 +2,7 @@ package com.dmon.sshop._domain.identity.servicev2.impl;
 
 import com.dmon.sshop._domain.common.exception.AppException;
 import com.dmon.sshop._domain.common.exception.ErrorCode;
-import com.dmon.sshop._domain.identity.model.entity.Seller;
+import com.dmon.sshop._domain.identity.model.entity.Shop;
 import com.dmon.sshop._domain.identity.repository.ISellerDomainRepository;
 import com.dmon.sshop._domain.identity.servicev2.ISellerDomainService;
 import lombok.AccessLevel;
@@ -21,8 +21,8 @@ public class SellerDomainServiceImpl implements ISellerDomainService {
 
 
     @Override
-    public Seller findOrError(String sellerId) {
-        Seller sellerPresent = this.sellerDomainRepo.findById(sellerId)
+    public Shop findOrError(String sellerId) {
+        Shop sellerPresent = this.sellerDomainRepo.findById(sellerId)
                 .orElseThrow(() -> new AppException(ErrorCode.SELLER__NOT_FOUND));
 
         return sellerPresent;

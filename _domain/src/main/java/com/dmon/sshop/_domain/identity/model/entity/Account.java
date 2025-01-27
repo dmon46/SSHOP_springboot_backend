@@ -1,6 +1,10 @@
 package com.dmon.sshop._domain.identity.model.entity;
 
 import com.dmon.sshop._domain.common.base.BaseEntity;
+import com.dmon.sshop._domain.shopping.model.entity.Address;
+import com.dmon.sshop._domain.shopping.model.entity.Cart;
+import com.dmon.sshop._domain.shopping.model.entity.Order;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -9,6 +13,8 @@ import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.SQLRestriction;
 
+import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -29,6 +35,31 @@ public class Account extends BaseEntity {
     @Column(name = "accountId", updatable = false, nullable = false)
     String id;
 
+    @OneToOne(mappedBy = "seller", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
+    @ToString.Exclude
+    Shop shop;
+
+    @OneToOne(mappedBy = "buyer", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
+    @ToString.Exclude
+    Cart cart;
+
+    @OneToMany(mappedBy = "buyer", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
+    @ToString.Exclude
+    List<Address> addresses;
+
+    @OneToMany(mappedBy = "buyer", fetch = FetchType.LAZY)
+    @JsonIgnore
+    @ToString.Exclude
+    List<Order> orders;
+
+    String status;
+
+    @Column(nullable = false)
+    Set<String> roles;
+
     @Column(nullable = false, unique = true)
     String username;
 
@@ -41,15 +72,16 @@ public class Account extends BaseEntity {
     @Column(unique = true)
     String phone;
 
-    @Column(nullable = false)
-    Set<String> roles;
+    String name;
+
+    String photo;
+
+    Date dob;
+
+    String gender;
 
     //THE NESTED OBJECTS//
-    public enum RoleType {
-        ADMIN, SELLER, USER,
-    }
+    public enum RoleType {ADMIN, SELLER, USER,}
 
-    public enum GenderType {
-        MALE, FEMALE,
-    }
+    public enum GenderType {MALE, FEMALE,}
 }
