@@ -15,12 +15,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 public class AccountController {
+
     //ADMIN//
     @RestController
     @RequestMapping("/admin/api/v1/account")
     @AllArgsConstructor
     @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
     public static class AccountAdminController {
+
         IAccountAppService accountAppService;
 
         //CREATE//
@@ -33,18 +35,7 @@ public class AccountController {
                     .body(this.accountAppService.createOne(body));
         }
 
-        //UPDATE//
-        @PatchMapping("/update/{accountId}")
-        public ResponseEntity<AccountRes> updateOne(
-                @PathVariable("accountId") String accountId,
-                @RequestBody AccountReq.Update body
-        ) {
-            return ResponseEntity
-                    .ok()
-                    .body(this.accountAppService.updateOne(accountId, body));
-        }
-
-        //LIST ALL//
+        //READ//
         @GetMapping("/list")
         public ResponseEntity<List<Account>> listAll() {
             return ResponseEntity
@@ -52,7 +43,6 @@ public class AccountController {
                     .body(this.accountAppService.listAll());
         }
 
-        //FIND ONE//
         @GetMapping("/find/{accountId}")
         public ResponseEntity<AccountRes> findOne(
                 @PathVariable("accountId") String accountId
@@ -67,6 +57,17 @@ public class AccountController {
             return ResponseEntity
                     .ok()
                     .body(this.accountAppService.findMyOne());
+        }
+
+        //UPDATE//
+        @PatchMapping("/update/{accountId}")
+        public ResponseEntity<AccountRes> updateOne(
+                @PathVariable("accountId") String accountId,
+                @RequestBody AccountReq.Update body
+        ) {
+            return ResponseEntity
+                    .ok()
+                    .body(this.accountAppService.updateOne(accountId, body));
         }
 
         //DELETE//

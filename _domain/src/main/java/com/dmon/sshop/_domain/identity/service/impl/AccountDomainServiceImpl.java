@@ -27,8 +27,8 @@ import java.util.Objects;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @Slf4j
 public class AccountDomainServiceImpl implements IAccountDomainService {
-    IAccountDomainRepository accountRepo;
 
+    IAccountDomainRepository accountRepo;
     IAccountMapper accountMapper;
 
     //CREATE//
@@ -113,5 +113,14 @@ public class AccountDomainServiceImpl implements IAccountDomainService {
         String accountId = context.getAuthentication().getName();
 
         return this.findOne(accountId);
+    }
+
+    //HELPER//
+    @Override
+    public Account findOrError(String accountId) {
+        Account accountPresent = this.accountRepo.findById(accountId)
+                .orElseThrow(() -> new AppException(ErrorCode.ACCOUNT__NOT_FOUND));
+
+        return accountPresent;
     }
 }

@@ -84,4 +84,6 @@ public class Account extends BaseEntity {
     public enum RoleType {ADMIN, SELLER, BUYER,}
 
     public enum GenderType {MALE, FEMALE,}
+
+    public enum StatusType {LIVE, DEACTIVATED, SUSPENDED, DELETED,}
 }

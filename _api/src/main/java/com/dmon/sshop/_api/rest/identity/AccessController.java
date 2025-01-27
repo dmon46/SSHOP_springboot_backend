@@ -58,7 +58,6 @@ public class AccessController {
         public ResponseEntity<AccountRes.Access> login(
                 @RequestBody AccountReq.Login accountLoginReq
         ) {
-            //todo: (side): don't allow seller login when status is registering (and others)
             return ResponseEntity
                     .ok()
                     .body(this.accessAppService.login(accountLoginReq, Account.RoleType.SELLER));

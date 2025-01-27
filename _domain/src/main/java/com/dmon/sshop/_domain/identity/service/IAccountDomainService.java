@@ -9,8 +9,12 @@ import com.dmon.sshop._domain.identity.model.entity.Account;
 public interface IAccountDomainService {
     // CREATE//
     AccountRes createOne(AccountReq.Create accountDto);
-
     Account preparePreCreate(AccountReq.Create accountDto, Account.RoleType roleType);
+
+    //READ//
+    List<Account> listAll();
+    AccountRes findOne(String accountId);
+    AccountRes findMyOne();
 
     // UPDATE//
     AccountRes updateOne(String accountId, AccountReq.Update body);
@@ -18,11 +22,6 @@ public interface IAccountDomainService {
     // DELETE//
     void deleteOne(String accountId);
 
-    // LIST//
-    List<Account> listAll();
-
-    // FIND//
-    AccountRes findOne(String accountId);
-
-    AccountRes findMyOne();
+    //HELPER//
+    Account findOrError(String accountId);
 }
