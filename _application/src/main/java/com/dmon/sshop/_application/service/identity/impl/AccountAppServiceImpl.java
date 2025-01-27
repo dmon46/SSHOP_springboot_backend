@@ -4,7 +4,7 @@ import com.dmon.sshop._application.service.identity.IAccountAppService;
 import com.dmon.sshop._domain.identity.model.entity.Account;
 import com.dmon.sshop._domain.identity.model.request.AccountReq;
 import com.dmon.sshop._domain.identity.model.response.AccountRes;
-import com.dmon.sshop._domain.identity.servicev2.IAccountDomainService;
+import com.dmon.sshop._domain.identity.service.IAccountDomainService;
 import com.dmon.sshop._infrastructure.security.impl.SecurityInfraHelperImpl;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

@@ -1,9 +1,9 @@
 package com.dmon.sshop._api.rest.identity;
 
 import com.dmon.sshop._application.service.identity.IAccessAppService;
+import com.dmon.sshop._domain.identity.model.entity.Account;
 import com.dmon.sshop._domain.identity.model.request.AccountReq;
 import com.dmon.sshop._domain.identity.model.response.AccountRes;
-import com.dmon.sshop._domain.identity.model.entity.Account;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 public class AccessController {
+
     //ADMIN//
     @RestController
     @RequestMapping("/admin/api/v1/access")
@@ -51,7 +52,6 @@ public class AccessController {
     public static class AccessSellerController {
 
         IAccessAppService accessAppService;
-        Account.RoleType roleType = Account.RoleType.SELLER;
 
         //LOG IN, OUT//
         @PostMapping("/login")
@@ -61,7 +61,7 @@ public class AccessController {
             //todo: (side): don't allow seller login when status is registering (and others)
             return ResponseEntity
                     .ok()
-                    .body(this.accessAppService.login(accountLoginReq, roleType));
+                    .body(this.accessAppService.login(accountLoginReq, Account.RoleType.SELLER));
         }
 
         @PostMapping("/logout")
@@ -79,7 +79,7 @@ public class AccessController {
         ) {
             return ResponseEntity
                     .status(HttpStatus.CREATED)
-                    .body(this.accessAppService.signup(accessDto, roleType));
+                    .body(this.accessAppService.signup(accessDto, Account.RoleType.SELLER));
         }
     }
 
@@ -88,10 +88,9 @@ public class AccessController {
     @RequestMapping("/api/v1/access")
     @AllArgsConstructor
     @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
-    public static class AccessUserController {
+    public static class AccessBuyerController {
 
         IAccessAppService accessAppService;
-        Account.RoleType roleType = Account.RoleType.USER;
 
         //LOG IN, OUT//
         @PostMapping("/login")
@@ -101,7 +100,7 @@ public class AccessController {
         ) {
             return ResponseEntity
                     .ok()
-                    .body(this.accessAppService.login(accountLoginReq, roleType));
+                    .body(this.accessAppService.login(accountLoginReq, Account.RoleType.BUYER));
         }
 
         @PostMapping("/logout")
@@ -119,7 +118,7 @@ public class AccessController {
         ) {
             return ResponseEntity
                     .status(HttpStatus.CREATED)
-                    .body(this.accessAppService.signup(accessCreateReq, roleType));
+                    .body(this.accessAppService.signup(accessCreateReq, Account.RoleType.BUYER));
         }
     }
 }

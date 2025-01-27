@@ -34,6 +34,7 @@ import java.util.StringJoiner;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @Slf4j
 public class SecurityInfraHelperImpl implements ISecurityInfraHelper {
+
     @NonFinal
     @Value("${sshop.jwt.secret-key}")
     String SECRET_KEY;
@@ -93,6 +94,11 @@ public class SecurityInfraHelperImpl implements ISecurityInfraHelper {
         Optional<String> subject = Optional.ofNullable(extractPrincipal(securityContext.getAuthentication()));
 
         return subject.orElseThrow(() -> new AppException(ErrorCode.SECURITY__NOT_IN_SECURITY));
+    }
+
+    @Override
+    public String getAccountRole() {
+        return null;
     }
 
 

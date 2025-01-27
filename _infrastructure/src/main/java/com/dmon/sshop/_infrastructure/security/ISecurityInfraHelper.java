@@ -10,5 +10,6 @@ public interface ISecurityInfraHelper {
     //JWT//
     String genToken(Account account);
     String getAccountId();
+    String getAccountRole();
 
 }

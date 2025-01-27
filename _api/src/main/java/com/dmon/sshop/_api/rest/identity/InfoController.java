@@ -37,7 +37,7 @@ public class InfoController {
     @RequestMapping("/api/v1/info")
     @AllArgsConstructor
     @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
-    public static class InforUserController {
+    public static class InforBuyerController {
         @PostMapping("/create")
         public ResponseEntity<UserRes> createOne(
                 @Valid @RequestBody UserReq.Create body

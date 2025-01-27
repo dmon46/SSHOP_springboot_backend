@@ -19,8 +19,8 @@ import org.springframework.stereotype.Service;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @Slf4j
 public class AccessSecurityServiceImpl implements IAccessSecurityService {
-    IAccountDomainRepository accountDomainRepository;
 
+    IAccountDomainRepository accountDomainRepository;
     ISecurityInfraHelper securityInfraHelper;
 
     @Override

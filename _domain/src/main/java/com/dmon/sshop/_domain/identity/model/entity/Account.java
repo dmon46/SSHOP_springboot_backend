@@ -81,7 +81,7 @@ public class Account extends BaseEntity {
     String gender;
 
     //THE NESTED OBJECTS//
-    public enum RoleType {ADMIN, SELLER, USER,}
+    public enum RoleType {ADMIN, SELLER, BUYER,}
 
     public enum GenderType {MALE, FEMALE,}
 }
