@@ -23,9 +23,10 @@ public class AccessController {
     @AllArgsConstructor
     @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
     public static class AccessAdminController {
+        
         IAccessAppService accessAppService;
 
-        //LOG IN, OUT//
+        //LOG IN//
         @PostMapping("/login")
         public ResponseEntity<AccountRes.Access> login(
                 @RequestBody AccountReq.Login request
@@ -35,6 +36,7 @@ public class AccessController {
                     .body(this.accessAppService.login(request, Account.RoleType.ADMIN));
         }
 
+        //LOG OUT//
         @PostMapping("/logout")
         @PreAuthorize("hasRole('ADMIN')")
         public ResponseEntity<Void> logout() {
@@ -53,7 +55,7 @@ public class AccessController {
 
         IAccessAppService accessAppService;
 
-        //LOG IN, OUT//
+        //LOG IN//
         @PostMapping("/login")
         public ResponseEntity<AccountRes.Access> login(
                 @RequestBody AccountReq.Login accountLoginReq
@@ -63,6 +65,7 @@ public class AccessController {
                     .body(this.accessAppService.login(accountLoginReq, Account.RoleType.SELLER));
         }
 
+        //LOG OUT//
         @PostMapping("/logout")
         @PreAuthorize("hasRole('SELLER')")
         public ResponseEntity<Void> logout() {
@@ -91,7 +94,7 @@ public class AccessController {
 
         IAccessAppService accessAppService;
 
-        //LOG IN, OUT//
+        //LOG IN//
         @PostMapping("/login")
         @PreAuthorize("hasRole('USER')")
         public ResponseEntity<AccountRes.Access> login(
@@ -102,6 +105,7 @@ public class AccessController {
                     .body(this.accessAppService.login(accountLoginReq, Account.RoleType.BUYER));
         }
 
+        //LOG OUT//
         @PostMapping("/logout")
         @PreAuthorize("hasRole('USER')")
         public ResponseEntity<Void> logout() {

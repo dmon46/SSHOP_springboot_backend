@@ -27,9 +27,16 @@ spring:
       max-file-size: 50MB
       max-request-size: 50MB
 
+logging:
+  level:
+    org.springframework.security: DEBUG
+
 sshop:
   jwt:
-    secret-key: 1TjXchw5FloESb63Kc+DFhTARvpWL4jUGCwfGWxuG5SIf/1y/LgJxHnMqaF6A/ij
+    access-secret-key: f90f6c917536c37e7fe5d56ccaf75534f69dd709089356dbdaefab4fc11c47be1281df3e46d7b24804e3309686775b91a23e29b81ea33d59d6e11af8e5da20b0 #hex 64 bytes
+    access-valid-duration: 1D
+    refresh-secret-key: 1TjXchw5FloESb63Kc+DFhTARvpWL4jUGCwfGWxuG5SIf/1y/LgJxHnMqaF6A/ij #base64 64 bytes
+    refresh-valid-duration: 7D
   media:
     uri: file:///D:/.Project/kltn/SSHOP_media
 

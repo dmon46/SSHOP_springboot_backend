@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "33ceb760-daed-4a94-b7ce-c901fb6f8182",
 		"name": "SSHOP api document",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
 		"_exporter_id": "39273924"
 	},
 	"item": [
@@ -32,23 +32,14 @@
 										}
 									]
 								},
-								"url": {
-									"raw": "{{admin}}/{{media}}/upload",
-									"host": [
-										"{{admin}}"
-									],
-									"path": [
-										"{{media}}",
-										"upload"
-									]
-								}
+								"url": "{{admin}}/{{media}}/upload"
 							},
 							"response": []
 						}
 					]
 				},
 				{
-					"name": "Account group",
+					"name": "Identity group",
 					"item": [
 						{
 							"name": "Access: log in",
@@ -64,16 +55,7 @@
 										}
 									}
 								},
-								"url": {
-									"raw": "{{admin}}/{{access}}/login",
-									"host": [
-										"{{admin}}"
-									],
-									"path": [
-										"{{access}}",
-										"login"
-									]
-								}
+								"url": "{{admin}}/{{access}}/login"
 							},
 							"response": []
 						},
@@ -82,13 +64,9 @@
 							"request": {
 								"auth": {
 									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJzc2hvcC5kbW9uLmNvbSIsInN1YiI6IjU5ZWE2MDJlLWY2MDMtNDNiMy04M2U4LWFjMDQ5YTgwNjkyZCIsImV4cCI6MTc2OTY5NDEwMCwiaWF0IjoxNzM1MTM0MTAwLCJzY29wZSI6IkFETUlOIn0.TZMZrifoTXng2MlYs7Qwhp4zsqZfX7FMmfz1Ss3Xvv9p9MlbhhFGJGuzlxxgrqmD9DrUnKsXpJB_JQFs-9hMCA",
-											"type": "string"
-										}
-									]
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJzc2hvcC5kbW9uLmNvbSIsInN1YiI6IjU5ZWE2MDJlLWY2MDMtNDNiMy04M2U4LWFjMDQ5YTgwNjkyZCIsImV4cCI6MTc2OTY5NDEwMCwiaWF0IjoxNzM1MTM0MTAwLCJzY29wZSI6IkFETUlOIn0.TZMZrifoTXng2MlYs7Qwhp4zsqZfX7FMmfz1Ss3Xvv9p9MlbhhFGJGuzlxxgrqmD9DrUnKsXpJB_JQFs-9hMCA"
+									}
 								},
 								"method": "POST",
 								"header": [],
@@ -101,22 +79,7 @@
 										}
 									}
 								},
-								"url": {
-									"raw": "http://localhost:8044/sshop/admin/api/v1/access/logout",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "8044",
-									"path": [
-										"sshop",
-										"admin",
-										"api",
-										"v1",
-										"access",
-										"logout"
-									]
-								}
+								"url": "http://localhost:8044/sshop/admin/api/v1/access/logout"
 							},
 							"response": []
 						},
@@ -134,21 +97,7 @@
 										}
 									}
 								},
-								"url": {
-									"raw": "http://localhost:8044/sshop/api/v1/accounts/create",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "8044",
-									"path": [
-										"sshop",
-										"api",
-										"v1",
-										"accounts",
-										"create"
-									]
-								}
+								"url": "http://localhost:8044/sshop/api/v1/accounts/create"
 							},
 							"response": []
 						},
@@ -166,22 +115,7 @@
 										}
 									}
 								},
-								"url": {
-									"raw": "http://localhost:8044/sshop/api/v1/accounts/update/c47c9570-98d5-4fb0-ba29-9e09adf09d89",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "8044",
-									"path": [
-										"sshop",
-										"api",
-										"v1",
-										"accounts",
-										"update",
-										"c47c9570-98d5-4fb0-ba29-9e09adf09d89"
-									]
-								}
+								"url": "http://localhost:8044/sshop/api/v1/accounts/update/c47c9570-98d5-4fb0-ba29-9e09adf09d89"
 							},
 							"response": []
 						},
@@ -191,16 +125,6 @@
 								"disableBodyPruning": true
 							},
 							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "eyJhbGciOiJIUzUxMiJ9.eyJpsssc3MiOiJzc2hvcC5kbW9uLmNvbSIsInN1YiI6IjI4NDhhZjhmLWU4YmYtNDA3MC05OGRmLWFjOTBiZWFkMTgzNiIsImV4cCI6MTc2ODYzMjY0OSwiaWF0IjoxNzM0MDcyNjQ5LCJzY29wZSI6IlVTRVIifQ.FRDOFlAjDAsbdM0WRZm1R_AuomATrkJ2XiJeG5SEF5rNRZlPViKH4oL9czUV2KQHJhG1Z5pK9pwbvwd0YJM2Vg",
-											"type": "string"
-										}
-									]
-								},
 								"method": "GET",
 								"header": [],
 								"body": {
@@ -212,21 +136,7 @@
 										}
 									}
 								},
-								"url": {
-									"raw": "http://localhost:8044/sshop/api/v1/accounts/list",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "8044",
-									"path": [
-										"sshop",
-										"api",
-										"v1",
-										"accounts",
-										"list"
-									]
-								}
+								"url": "http://localhost:8044/sshop/admin/api/v1/account/list"
 							},
 							"response": []
 						},
@@ -236,16 +146,6 @@
 								"disableBodyPruning": true
 							},
 							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJzc2hvcC5kbW9uLmNvbSIsInN1YiI6IjI4NDhhZjhmLWU4YmYtNDA3MC05OGRmLWFjOTBiZWFkMTgzNiIsImV4cCI6MTc2ODYzMjY0OSwiaWF0IjoxNzM0MDcyNjQ5LCJzY29wZSI6IlVTRVIifQ.FRDOFlAjDAsbdM0WRZm1R_AuomATrkJ2XiJeG5SEF5rNRZlPViKH4oL9czUV2KQHJhG1Z5pK9pwbvwd0YJM2Vg",
-											"type": "string"
-										}
-									]
-								},
 								"method": "GET",
 								"header": [],
 								"body": {
@@ -258,7 +158,7 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8044/sshop/api/v1/accounts/find/:id",
+									"raw": "http://localhost:8044/sshop/admin/api/v1/account/find/:id",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -266,16 +166,17 @@
 									"port": "8044",
 									"path": [
 										"sshop",
+										"admin",
 										"api",
 										"v1",
-										"accounts",
+										"account",
 										"find",
 										":id"
 									],
 									"variable": [
 										{
 											"key": "id",
-											"value": "2848af8f-e8bf-4070-98df-ac90bead1836"
+											"value": "59ea602e-f603-43b3-83e8-ac049a80692d"
 										}
 									]
 								}
@@ -287,45 +188,17 @@
 							"request": {
 								"auth": {
 									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJzc2hvcC5kbW9uLmNvbSIsInN1YiI6ImVjOWI2NWVhLTY3OTAtNDMwNC05OTlhLWJlY2QzZjgxNGNhZCIsImV4cCI6MTc2ODYzMjY0NSwiaWF0IjoxNzM0MDcyNjQ1LCJzY29wZSI6IkFETUlOIn0.1rxppDQwAaGHcC-Y6j5skTz_UymkbEu7cOt-wRy1WJgL6SwS3kIsoj3CXR0gtf8STMdQlOmqQPJuWQCrnhXlpw",
-											"type": "string"
-										}
-									]
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJzc2hvcC5kbW9uLmNvbSIsInN1YiI6ImVjOWI2NWVhLTY3OTAtNDMwNC05OTlhLWJlY2QzZjgxNGNhZCIsImV4cCI6MTc2ODYzMjY0NSwiaWF0IjoxNzM0MDcyNjQ1LCJzY29wZSI6IkFETUlOIn0.1rxppDQwAaGHcC-Y6j5skTz_UymkbEu7cOt-wRy1WJgL6SwS3kIsoj3CXR0gtf8STMdQlOmqQPJuWQCrnhXlpw"
+									}
 								},
 								"method": "GET",
 								"header": [],
-								"url": {
-									"raw": "http://localhost:8044/sshop/api/v1/accounts/my",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "8044",
-									"path": [
-										"sshop",
-										"api",
-										"v1",
-										"accounts",
-										"my"
-									]
-								}
+								"url": "http://localhost:8044/sshop/admin/api/v1/account/my"
 							},
 							"response": []
 						}
 					],
-					"auth": {
-						"type": "bearer",
-						"bearer": [
-							{
-								"key": "token",
-								"value": "",
-								"type": "string"
-							}
-						]
-					},
 					"event": [
 						{
 							"listen": "prerequest",
@@ -366,16 +239,7 @@
 										}
 									}
 								},
-								"url": {
-									"raw": "{{admin}}/{{category}}/create",
-									"host": [
-										"{{admin}}"
-									],
-									"path": [
-										"{{category}}",
-										"create"
-									]
-								}
+								"url": "{{admin}}/{{category}}/create"
 							},
 							"response": []
 						},
@@ -386,24 +250,14 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"name\": \"string\",\r\n  \"description\": \"string\",\r\n  \"photo\": \"string\",\r\n  \"position\": 1\r\n}",
+									"raw": "{\r\n//   \"name\": \"string\",\r\n//   \"description\": \"string\",\r\n  \"photo\": \"photo\",\r\n  \"position\": 20\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
 										}
 									}
 								},
-								"url": {
-									"raw": "{{admin}}/{{category}}/update/e77d9154-4624-42d5-b390-2dd6020c6546",
-									"host": [
-										"{{admin}}"
-									],
-									"path": [
-										"{{category}}",
-										"update",
-										"e77d9154-4624-42d5-b390-2dd6020c6546"
-									]
-								}
+								"url": "{{admin}}/{{category}}/update/d5b2f8e2-76d9-456f-95ef-86af6df9eab0"
 							},
 							"response": []
 						},
@@ -530,16 +384,7 @@
 							"request": {
 								"method": "GET",
 								"header": [],
-								"url": {
-									"raw": "{{admin}}/{{product}}/list",
-									"host": [
-										"{{admin}}"
-									],
-									"path": [
-										"{{product}}",
-										"list"
-									]
-								}
+								"url": "{{admin}}/{{product}}/list"
 							},
 							"response": []
 						}
@@ -548,13 +393,9 @@
 			],
 			"auth": {
 				"type": "bearer",
-				"bearer": [
-					{
-						"key": "token",
-						"value": "eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJzc2hvcC5kbW9uLmNvbSIsInN1YiI6IjU5ZWE2MDJlLWY2MDMtNDNiMy04M2U4LWFjMDQ5YTgwNjkyZCIsImV4cCI6MTc3MDI5ODA5MSwiaWF0IjoxNzM1NzM4MDkxLCJzY29wZSI6IkFETUlOIn0.mEuRC6M93G4wsg7YC9kfxvbU4ujYhEAIKn87-YbbhDyZqMnpplJMPtYMXSavO1qHhjbkUSoy8eEcDwqGZXY2xQ",
-						"type": "string"
-					}
-				]
+				"bearer": {
+					"token": "eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJzc2hvcC5kbW9uLmNvbSIsInN1YiI6IjU5ZWE2MDJlLWY2MDMtNDNiMy04M2U4LWFjMDQ5YTgwNjkyZCIsImV4cCI6MTc3MTI0MjkyNSwiaWF0IjoxNzM2NjgyOTI1LCJzY29wZSI6IkFETUlOIn0.doqEeldF3MQbwglD5s4HPyYUNTsC5c_varmznRFbQl_tlvspr-DZkhz52owzs326qr07WyvATDm1qrz4_wOC7g"
+				}
 			},
 			"event": [
 				{
@@ -605,23 +446,14 @@
 										}
 									]
 								},
-								"url": {
-									"raw": "{{seller}}/{{media}}/upload",
-									"host": [
-										"{{seller}}"
-									],
-									"path": [
-										"{{media}}",
-										"upload"
-									]
-								}
+								"url": "{{seller}}/{{media}}/upload"
 							},
 							"response": []
 						}
 					]
 				},
 				{
-					"name": "Account group",
+					"name": "Identity group",
 					"item": [
 						{
 							"name": "Access: log in",
@@ -640,22 +472,7 @@
 										}
 									}
 								},
-								"url": {
-									"raw": "http://localhost:8044/sshop/seller/api/v1/access/login",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "8044",
-									"path": [
-										"sshop",
-										"seller",
-										"api",
-										"v1",
-										"access",
-										"login"
-									]
-								}
+								"url": "http://localhost:8044/sshop/seller/api/v1/access/login"
 							},
 							"response": []
 						},
@@ -673,22 +490,7 @@
 										}
 									}
 								},
-								"url": {
-									"raw": "http://localhost:8044/sshop/seller/api/v1/access/logout",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "8044",
-									"path": [
-										"sshop",
-										"seller",
-										"api",
-										"v1",
-										"access",
-										"logout"
-									]
-								}
+								"url": "http://localhost:8044/sshop/seller/api/v1/access/logout"
 							},
 							"response": []
 						},
@@ -706,22 +508,7 @@
 										}
 									}
 								},
-								"url": {
-									"raw": "http://localhost:8044/sshop/seller/api/v1/access/signup",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "8044",
-									"path": [
-										"sshop",
-										"seller",
-										"api",
-										"v1",
-										"access",
-										"signup"
-									]
-								}
+								"url": "http://localhost:8044/sshop/seller/api/v1/access/signup"
 							},
 							"response": []
 						}
@@ -735,16 +522,7 @@
 							"request": {
 								"method": "GET",
 								"header": [],
-								"url": {
-									"raw": "{{seller}}/{{category}}/tree",
-									"host": [
-										"{{seller}}"
-									],
-									"path": [
-										"{{category}}",
-										"tree"
-									]
-								}
+								"url": "{{seller}}/{{category}}/tree"
 							},
 							"response": []
 						},
@@ -755,23 +533,14 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"category\": { \"id\": \"8d4c2f1a-867c-49d8-8d3e-2b9100abd348\" },\r\n    \"skus\": [\r\n        {\r\n            \"inventory\": { \"stocks\": 4648 },\r\n            \"skuCode\": \"EX11\",\r\n            \"tierName\": \"Đen, M\",\r\n            \"tierIndex\": [0, 0],\r\n            \"productCost\": 99000,\r\n            \"retailPrice\": 199000,\r\n            \"specifications\": [\r\n                { \"name\": \"height\", \"value\": \"44\" },\r\n                { \"name\": \"length\", \"value\": \"66\" },\r\n                { \"name\": \"width\", \"value\": \"88\" }\r\n            ]\r\n        },\r\n        {\r\n            \"inventory\": { \"stocks\": 4648 },\r\n            \"skuCode\": \"EX12\",\r\n            \"tierName\": \"Đen, L\",\r\n            \"tierIndex\": [0, 1],\r\n            \"productCost\": 99000,\r\n            \"retailPrice\": 199000,\r\n            \"specifications\": [\r\n                { \"name\": \"height\", \"value\": \"44\" },\r\n                { \"name\": \"length\", \"value\": \"66\" },\r\n                { \"name\": \"width\", \"value\": \"88\" }\r\n            ]\r\n        },\r\n        {\r\n            \"inventory\": { \"stocks\": 4646 },\r\n            \"skuCode\": \"EX13\",\r\n            \"tierName\": \"Trắng, M\",\r\n            \"tierIndex\": [1, 0],\r\n            \"productCost\": 99000,\r\n            \"retailPrice\": 199000,\r\n            \"specifications\": [\r\n                { \"name\": \"height\", \"value\": \"44\" },\r\n                { \"name\": \"length\", \"value\": \"66\" },\r\n                { \"name\": \"width\", \"value\": \"88\" }\r\n            ]\r\n        },\r\n        {\r\n            \"inventory\": { \"stocks\": 4646 },\r\n            \"skuCode\": \"EX14\",\r\n            \"tierName\": \"Trắng, L\",\r\n            \"tierIndex\": [1, 1],\r\n            \"productCost\": 99000,\r\n            \"retailPrice\": 199000,\r\n            \"specifications\": [\r\n                { \"name\": \"height\", \"value\": \"44\" },\r\n                { \"name\": \"length\", \"value\": \"66\" },\r\n                { \"name\": \"width\", \"value\": \"88\" }\r\n            ]\r\n        }\r\n    ],\r\n    \"name\": \"Áo cotton cực mát | Dmon Clothing\",\r\n    \"description\": \"Cotton cực mát\",\r\n    \"thumb\": \"test\",\r\n    \"photos\": [\"test\", \"test\", \"test\", \"test\"],\r\n    \"video\": \"test\",\r\n    \"sizeChart\": \"test\",\r\n    \"weight\": 50,\r\n    \"location\": \"Số 46 Đường số 8, Linh Trung, Thủ Đức, TP.Hồ Chi Minh\",\r\n    \"attributes\": [\r\n        { \"name\": \"Nơi sản xuất\", \"value\": \"Việt Nam\" },\r\n        { \"name\": \"Chất liệu\", \"value\": \"Cotton\" }\r\n    ],\r\n    \"tierVariations\": [\r\n        { \"name\": \"Màu sắc\", \"options\": [\"Đen\", \"Trắng\"] },\r\n        { \"name\": \"Kích cỡ\", \"options\": [\"M\", \"L\"] }\r\n    ]\r\n}",
+									"raw": "{\r\n    \"category\": { \"id\": \"8d4c2f1a-867c-49d8-8d3e-2b9100abd348\" },\r\n    \"skus\": [\r\n        {\r\n            \"inventory\": { \"stocks\": 6000 },\r\n            \"skuCode\": \"EX41\",\r\n            \"tierName\": \"Đen, M\",\r\n            \"tierIndex\": [0, 0],\r\n            \"productCost\": 60000,\r\n            \"retailPrice\": 160000,\r\n            \"specifications\": [\r\n                { \"name\": \"height\", \"value\": \"44\" },\r\n                { \"name\": \"length\", \"value\": \"66\" },\r\n                { \"name\": \"width\", \"value\": \"88\" }\r\n            ]\r\n        },\r\n        {\r\n            \"inventory\": { \"stocks\": 7000 },\r\n            \"skuCode\": \"EX42\",\r\n            \"tierName\": \"Đen, L\",\r\n            \"tierIndex\": [0, 1],\r\n            \"productCost\": 70000,\r\n            \"retailPrice\": 170000,\r\n            \"specifications\": [\r\n                { \"name\": \"height\", \"value\": \"44\" },\r\n                { \"name\": \"length\", \"value\": \"66\" },\r\n                { \"name\": \"width\", \"value\": \"88\" }\r\n            ]\r\n        },\r\n        {\r\n            \"inventory\": { \"stocks\": 8000 },\r\n            \"skuCode\": \"EX43\",\r\n            \"tierName\": \"Trắng, M\",\r\n            \"tierIndex\": [1, 0],\r\n            \"productCost\": 80000,\r\n            \"retailPrice\": 180000,\r\n            \"specifications\": [\r\n                { \"name\": \"height\", \"value\": \"44\" },\r\n                { \"name\": \"length\", \"value\": \"66\" },\r\n                { \"name\": \"width\", \"value\": \"88\" }\r\n            ]\r\n        },\r\n        {\r\n            \"inventory\": { \"stocks\": 9000 },\r\n            \"skuCode\": \"EX44\",\r\n            \"tierName\": \"Trắng, L\",\r\n            \"tierIndex\": [1, 1],\r\n            \"productCost\": 90000,\r\n            \"retailPrice\": 190000,\r\n            \"specifications\": [\r\n                { \"name\": \"height\", \"value\": \"44\" },\r\n                { \"name\": \"length\", \"value\": \"66\" },\r\n                { \"name\": \"width\", \"value\": \"88\" }\r\n            ]\r\n        }\r\n    ],\r\n    \"name\": \"Áo khoác da cực ngầu | Dmon Clothing\",\r\n    \"description\": \"Da cực ngầu\",\r\n    \"thumb\": \"thumb\",\r\n    \"photos\": [\"photo\", \"photos\", \"photos\", \"photos\"],\r\n    \"video\": \"video\",\r\n    \"sizeChart\": \"sizeChart\",\r\n    \"weight\": 50,\r\n    \"location\": \"Số 46 Đường số 8, Linh Trung, Thủ Đức, TP.Hồ Chi Minh\",\r\n    \"attributes\": [\r\n        { \"name\": \"Nơi sản xuất\", \"value\": \"Việt Nam\" },\r\n        { \"name\": \"Chất liệu\", \"value\": \"Cotton\" }\r\n    ],\r\n    \"tierVariations\": [\r\n        { \"name\": \"Màu sắc\", \"options\": [\"Đen\", \"Trắng\"] },\r\n        { \"name\": \"Kích cỡ\", \"options\": [\"M\", \"L\"] }\r\n    ]\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
 										}
 									}
 								},
-								"url": {
-									"raw": "{{seller}}/{{product}}/create",
-									"host": [
-										"{{seller}}"
-									],
-									"path": [
-										"{{product}}",
-										"create"
-									]
-								}
+								"url": "{{seller}}/{{product}}/create"
 							},
 							"response": []
 						},
@@ -788,6 +557,32 @@
 									"path": [
 										"{{product}}",
 										"list"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": null,
+											"description": "1",
+											"disabled": true
+										},
+										{
+											"key": "size",
+											"value": null,
+											"description": "4",
+											"disabled": true
+										},
+										{
+											"key": "sort",
+											"value": null,
+											"description": "updatedAt",
+											"disabled": true
+										},
+										{
+											"key": "direct",
+											"value": null,
+											"description": "desc",
+											"disabled": true
+										}
 									]
 								}
 							},
@@ -798,13 +593,9 @@
 			],
 			"auth": {
 				"type": "bearer",
-				"bearer": [
-					{
-						"key": "token",
-						"value": "eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJzc2hvcC5kbW9uLmNvbSIsInN1YiI6ImNhMDY2ODI4LTczNWEtNDdjZC1hNWM5LTk2NDMxMWM5YzY0MSIsImV4cCI6MTc3MDUzMzU5OCwiaWF0IjoxNzM1OTczNTk4LCJzY29wZSI6IlNFTExFUiJ9.JhSLMvNuCvnKvjHncrZXmIXH0jw98HqeHymPIRXxutB0ngHrEm2Qcdc5FeV8SIKrm1n6OJI78O03hUoe1hPCRQ",
-						"type": "string"
-					}
-				]
+				"bearer": {
+					"token": "eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJzc2hvcC5kbW9uLmNvbSIsInN1YiI6ImNhMDY2ODI4LTczNWEtNDdjZC1hNWM5LTk2NDMxMWM5YzY0MSIsImV4cCI6MTc3MTMwNDgwNiwiaWF0IjoxNzM2NzQ0ODA2LCJzY29wZSI6IlNFTExFUiJ9.puGc6gdmrr5vEbOh5tOBJ1yd2JjTPxC6VbuG3i9utNL8IZ2vloPjTb64Xr77alMtajfTH8PkVh6ePX_OsDmEww"
+				}
 			},
 			"event": [
 				{
@@ -855,23 +646,14 @@
 										}
 									]
 								},
-								"url": {
-									"raw": "{{buyer}}/{{media}}/upload",
-									"host": [
-										"{{buyer}}"
-									],
-									"path": [
-										"{{media}}",
-										"upload"
-									]
-								}
+								"url": "{{buyer}}/{{media}}/upload"
 							},
 							"response": []
 						}
 					]
 				},
 				{
-					"name": "Account group",
+					"name": "Identity group",
 					"item": [
 						{
 							"name": "Access: log in",
@@ -887,16 +669,7 @@
 										}
 									}
 								},
-								"url": {
-									"raw": "{{buyer}}/{{access}}/login",
-									"host": [
-										"{{buyer}}"
-									],
-									"path": [
-										"{{access}}",
-										"login"
-									]
-								}
+								"url": "{{buyer}}/{{access}}/login"
 							},
 							"response": []
 						}
@@ -910,82 +683,13 @@
 							"request": {
 								"method": "GET",
 								"header": [],
-								"url": {
-									"raw": "{{buyer}}/{{category}}/tree",
-									"host": [
-										"{{buyer}}"
-									],
-									"path": [
-										"{{category}}",
-										"tree"
-									]
-								}
+								"url": "{{buyer}}/{{category}}/tree"
 							},
 							"response": []
 						}
 					]
 				}
 			]
-		},
-		{
-			"name": "DDD: app: hi",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8044/app/hi",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8044",
-					"path": [
-						"app",
-						"hi"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "DDD: demo: hi",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8044/demo/hi",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8044",
-					"path": [
-						"demo",
-						"hi"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "DDD: event: hi",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8044/event/hi",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8044",
-					"path": [
-						"event",
-						"hi"
-					]
-				}
-			},
-			"response": []
 		}
 	],
 	"event": [

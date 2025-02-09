@@ -27,6 +27,7 @@ import java.util.List;
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Shop extends BaseEntity {
+
     @Id
     String id;
 

@@ -28,7 +28,10 @@ import java.util.ArrayList;
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Order extends BaseEntity {
+
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "orderId", nullable = false, updatable = false)
     String id;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -72,8 +75,6 @@ public class Order extends BaseEntity {
     Instant shipmentDate;
 
     Instant deliveryDate;
-
-    boolean isReviewable;
 
     //NESTED OBJECTS//
     public enum StatusType {DRAFT, UNPAID, PREPARING, TRANSIT, DELIVERING, DELIVERED, RETURN, CANCELED,}
